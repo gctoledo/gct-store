@@ -15,9 +15,9 @@ CREATE TABLE "Product" (
     "slug" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "basePrice" DECIMAL(8,2) NOT NULL,
-    "imageUrl" TEXT NOT NULL,
+    "imageUrls" TEXT[],
     "categoryId" TEXT NOT NULL,
-    "discountPercent" INTEGER NOT NULL DEFAULT 0,
+    "discountPercentage" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

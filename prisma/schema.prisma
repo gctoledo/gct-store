@@ -26,11 +26,11 @@ model Product {
   slug            String
   description     String
   basePrice       Decimal  @db.Decimal(8, 2) //define o preco como um campo decimal com no maximo 8 numeros antes da virgula e maximo 2 numeros depois da virgula
-  imageUrl        String
+  imageUrls       String[]
   categoryId      String
   category        Category @relation(fields: [categoryId], references: [id]) //cria uma relacao entre os dois models
   //category tem relacao com o model Category -> fields: indica o campo do model Product que tem relação / references: indica o campo do model Category que possui relacao com fields
-  discountPercent Int      @default(0)
+  discountPercentage Int      @default(0)
 }
 
 model Account {
