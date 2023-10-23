@@ -10,14 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//criando tabelas (model)
-
 model Category {
-  id       String    @id @default(uuid()) //id -> é uma string -> @id significa que é chave primária -> default dele é aleatório (uuid())
+  id       String    @id @default(uuid())
   name     String
   slug     String
   imageUrl String
-  products Product[] //criando relacao dos dois models, products é um array de Product
+  products Product[]
 }
 
 model Product {
@@ -25,11 +23,10 @@ model Product {
   name            String
   slug            String
   description     String
-  basePrice       Decimal  @db.Decimal(8, 2) //define o preco como um campo decimal com no maximo 8 numeros antes da virgula e maximo 2 numeros depois da virgula
+  basePrice       Decimal  @db.Decimal(8, 2)
   imageUrls       String[]
   categoryId      String
-  category        Category @relation(fields: [categoryId], references: [id]) //cria uma relacao entre os dois models
-  //category tem relacao com o model Category -> fields: indica o campo do model Product que tem relação / references: indica o campo do model Category que possui relacao com fields
+  category        Category @relation(fields: [categoryId], references: [id])
   discountPercentage Int      @default(0)
 }
 
